@@ -1,6 +1,7 @@
 SetWorkingDir %A_ScriptDir%
 
 f7::
+Pause, toggle
 
 global choice
 InputBox, choice, CP Menu,
