@@ -1,7 +1,20 @@
 SetWorkingDir %A_ScriptDir%
 
+
+f6::
+Reload
+
+
 f7::
-Pause, toggle
+
+global macro_choice
+InputBox, macro_choice, Toggle Macro Upon Completion?,
+(
+0. Do nothing. (Default)
+1. Press F9
+2. Press F8
+)
+,, 360, 300,,,,, 0
 
 global choice
 InputBox, choice, CP Menu,
@@ -20,7 +33,6 @@ InputBox, choice, CP Menu,
 )
 ,, 360, 300
 
-title()
 search()
 Sleep, 5000
 
@@ -91,6 +103,15 @@ switch choice
 
 	case 22:
 	dualityM()
+}
+
+switch macro_choice
+{
+	case 1:
+	Send, {F9}
+
+	case 2:
+	Send, {F8}
 }
 
 return
@@ -550,56 +571,48 @@ dualityM()
 	Send, {LButton}
 }
 
-title()
-{
-	Loop
-	{
-		ImageSearch, xCoord, yCoord, 450, 355, 850, 410, *50 C:\Users\finit\Desktop\title_reference.png
-
-		if(ErrorLevel = 0) {
-			Send, {LButton}
-			break
-		}
-	}
-}
-
 search()
 {
 	Loop
 	{
+
+		ImageSearch, xCoord, yCoord, 450, 355, 850, 410, *50 C:\Users\finit\Desktop\title_reference.png
+		if(ErrorLevel = 0) {
+			Send, {LButton}
+			continue
+		}
+
 		MouseMove, 900, 330
 		Sleep, 1000
-		ImageSearch, xCoord, yCoord, 890, 220, 1160, 300, *50 C:\Users\finit\Desktop\character_reference.png
 
+		ImageSearch, xCoord, yCoord, 890, 220, 1160, 300, *50 C:\Users\finit\Desktop\character_reference.png
 		if(ErrorLevel = 0) {
 			Send, {LButton}
 			Sleep, 1000
-			break
+			continue
 		}	
-		else 
-		{
-			ImageSearch, xCoord, yCoord, 450, 300, 690, 340, *50 C:\Users\finit\Desktop\attention.png
 
-			if(ErrorLevel = 0) {
-				Send, {Esc}
-				Sleep, 1000
-				title()
-			}
-			else
-			{
-				ImageSearch, xCoord, yCoord, 450, 300, 690, 340, *50 C:\Users\finit\Desktop\error_reference.png
-
-				if(ErrorLevel = 0) {
-					Send, {Esc}
-					Sleep, 1000
-					title()
-				}
-				else
-				{
-					MouseMove, 600, 200
-					Sleep, 1000
-				}
-			}
+		ImageSearch, xCoord, yCoord, 450, 300, 690, 340, *50 C:\Users\finit\Desktop\attention.png
+		if(ErrorLevel = 0) {
+			Send, {Esc}
+			Sleep, 1000
+			continue
 		}
+
+		ImageSearch, xCoord, yCoord, 450, 300, 690, 340, *50 C:\Users\finit\Desktop\error_reference.png
+		if(ErrorLevel = 0) {
+			Send, {Esc}
+			Sleep, 1000
+			continue
+		}
+
+		ImageSearch, xCoord, yCoord, 920, 40, 1025, 60, *50 C:\Users\finit\Desktop\orbit_reference.png
+		if(ErrorLevel = 0) {
+			break
+		}
+
+		MouseMove, 600, 200
+		Sleep, 1000
+					
 	}
 }
