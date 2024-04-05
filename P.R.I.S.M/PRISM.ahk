@@ -12,7 +12,7 @@ Reload
 f7::
 
 global macro_choice
-InputBox, macro_choice, Toggle Macro Upon Completion?,
+InputBox, macro_choice, Activate additional macro?,
 (
 0. Do nothing. (Default)
 1. Press F9
@@ -21,7 +21,7 @@ InputBox, macro_choice, Toggle Macro Upon Completion?,
 ,, 360, 300,,,,, 0
 
 global choice
-InputBox, choice, CP Menu,
+InputBox, choice, Where would you like to go?,
 (
 1.  Crota's End               12.  Crota's End Master
 2.  Vault of Glass            13.  Vault of Glass Master 
@@ -41,7 +41,8 @@ search()
 
 return
 
-launcher(){
+launcher()
+{
 	
 	Sleep, 5000
 	switch choice
@@ -608,14 +609,14 @@ search()
 
 		ImageSearch, xCoord, yCoord, 450, 300, 690, 340, *50 C:\Users\finit\Desktop\attention.png
 		if(ErrorLevel = 0) {
-			Send, {Esc}
+			Send, {LButton}
 			Sleep, 1000
 			continue
 		}
 
 		ImageSearch, xCoord, yCoord, 450, 300, 690, 340, *50 C:\Users\finit\Desktop\error_reference.png
 		if(ErrorLevel = 0) {
-			Send, {Esc}
+			Send, {LButton}
 			Sleep, 1000
 			continue
 		}
@@ -623,6 +624,14 @@ search()
 		ImageSearch, xCoord, yCoord, 70, 710, 120, 740, *50 C:\Users\finit\Desktop\orbit_reference.png
 		if(ErrorLevel = 0) {
 			launcher()
+		}
+
+		ImageSearch, xCoord, yCoord, 450, 330, 740, 370, *50 C:\Users\finit\Desktop\afk_reference.png
+
+		if(ErrorLevel = 0) {
+			Send, {LButton}
+			Sleep, 1000
+			continue
 		}
 
 		MouseMove, 600, 200
@@ -644,6 +653,14 @@ insure()
 		}
 
 		ImageSearch, xCoord, yCoord, 450, 300, 690, 340, *50 C:\Users\finit\Desktop\error_reference.png
+		if(ErrorLevel = 0) {
+			Send, {F8}
+			Sleep, 1000
+			search()
+		}
+
+		ImageSearch, xCoord, yCoord, 450, 330, 740, 370, *50 C:\Users\finit\Desktop\afk_reference.png
+
 		if(ErrorLevel = 0) {
 			Send, {F8}
 			Sleep, 1000
