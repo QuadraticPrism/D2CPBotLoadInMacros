@@ -11,6 +11,14 @@ Reload
 
 f7::
 
+global error_ref := "C:\Users\finit\Desktop\error_reference.png"
+global orbit_ref := "C:\Users\finit\Desktop\orbit_reference.png"
+global title_ref := "C:\Users\finit\Desktop\title_reference.png"
+global afk_ref := "C:\Users\finit\Desktop\afk_reference.png"
+global attention_ref := "C:\Users\finit\Desktop\attention.png"
+global character_ref := "C:\Users\finit\Desktop\character_reference.png"
+
+
 global macro_choice
 InputBox, macro_choice, Activate additional macro?,
 (
@@ -591,7 +599,7 @@ search()
 	Loop
 	{
 
-		ImageSearch, xCoord, yCoord, 450, 355, 850, 410, *50 C:\Users\finit\Desktop\title_reference.png
+		ImageSearch, xCoord, yCoord, 450, 355, 850, 410, *50 title_ref
 		if(ErrorLevel = 0) {
 			Send, {LButton}
 			continue
@@ -600,33 +608,33 @@ search()
 		MouseMove, 900, 330
 		Sleep, 1000
 
-		ImageSearch, xCoord, yCoord, 890, 220, 1160, 300, *50 C:\Users\finit\Desktop\character_reference.png
+		ImageSearch, xCoord, yCoord, 890, 220, 1160, 300, *50 character_ref
 		if(ErrorLevel = 0) {
 			Send, {LButton}
 			Sleep, 1000
 			continue
 		}	
 
-		ImageSearch, xCoord, yCoord, 450, 300, 690, 340, *50 C:\Users\finit\Desktop\attention.png
+		ImageSearch, xCoord, yCoord, 450, 300, 690, 340, *50 attention_ref
 		if(ErrorLevel = 0) {
 			Send, {LButton}
 			Sleep, 1000
 			continue
 		}
 
-		ImageSearch, xCoord, yCoord, 450, 300, 690, 340, *50 C:\Users\finit\Desktop\error_reference.png
+		ImageSearch, xCoord, yCoord, 450, 300, 690, 340, *50 error_ref
 		if(ErrorLevel = 0) {
 			Send, {LButton}
 			Sleep, 1000
 			continue
 		}
 
-		ImageSearch, xCoord, yCoord, 70, 710, 120, 740, *50 C:\Users\finit\Desktop\orbit_reference.png
+		ImageSearch, xCoord, yCoord, 70, 710, 120, 740, *50 orbit_ref
 		if(ErrorLevel = 0) {
 			launcher()
 		}
 
-		ImageSearch, xCoord, yCoord, 450, 330, 740, 370, *50 C:\Users\finit\Desktop\afk_reference.png
+		ImageSearch, xCoord, yCoord, 450, 330, 740, 370, *50 afk_ref
 
 		if(ErrorLevel = 0) {
 			Send, {LButton}
@@ -645,24 +653,23 @@ insure()
 	Loop
 	{	
 
-		ImageSearch, xCoord, yCoord, 450, 300, 690, 340, *50 C:\Users\finit\Desktop\attention.png
+		ImageSearch, xCoord, yCoord, 450, 300, 690, 340, *50 attention_ref
 		if(ErrorLevel = 0) {
 			Send, {F8}
 			Sleep, 1000
 			search()
 		}
 
-		ImageSearch, xCoord, yCoord, 450, 300, 690, 340, *50 C:\Users\finit\Desktop\error_reference.png
+		ImageSearch, xCoord, yCoord, 450, 300, 690, 340, *50 error_ref
 		if(ErrorLevel = 0) {
 			Send, {F8}
 			Sleep, 1000
 			search()
 		}
 
-		ImageSearch, xCoord, yCoord, 450, 330, 740, 370, *50 C:\Users\finit\Desktop\afk_reference.png
+		ImageSearch, xCoord, yCoord, 450, 330, 740, 370, *50 afk_ref
 
 		if(ErrorLevel = 0) {
-			Send, {F8}
 			Sleep, 1000
 			search()
 		}
