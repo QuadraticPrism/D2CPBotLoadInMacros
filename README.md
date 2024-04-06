@@ -6,7 +6,7 @@
 
 First, you need AutoHotKey installed on your machine. 
 > [!IMPORTANT]
-> Second, you need to edit the macro script itself and assign the first six global variables to the absolute file path of the respective pictures so the Image Recognition can work.
+> Second, you need to ensure that the script and prerequsite images are in the same directory!
 - Press F7 to start the process, input your commands, and let the macro do the rest.
 - Press F6 to reload the script, should you need to.
 
