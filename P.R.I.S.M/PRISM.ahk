@@ -5,19 +5,13 @@ programmed by Prism#8483
 contributions + testing by Mars_Ultor#0160
 */
 
+SetWorkingDir %A_ScriptDir%
+
 f6::
 Reload
 
 
 f7::
-
-global error_ref := "C:\Users\finit\Desktop\error_reference.png"
-global orbit_ref := "C:\Users\finit\Desktop\orbit_reference.png"
-global title_ref := "C:\Users\finit\Desktop\title_reference.png"
-global afk_ref := "C:\Users\finit\Desktop\afk_reference.png"
-global attention_ref := "C:\Users\finit\Desktop\attention.png"
-global character_ref := "C:\Users\finit\Desktop\character_reference.png"
-
 
 global macro_choice
 InputBox, macro_choice, Activate additional macro?,
@@ -25,25 +19,28 @@ InputBox, macro_choice, Activate additional macro?,
 0. Do nothing. (Default)
 1. Press F9
 2. Press F8
+3. Press F9 + Skip to Insurance
+4. Press F8 + Skip to Insurance
 )
-,, 360, 300,,,,, 0
+,, 220, 200,,,,, 0
 
 global choice
 InputBox, choice, Where would you like to go?,
 (
-1.  Crota's End               12.  Crota's End Master
-2.  Vault of Glass            13.  Vault of Glass Master 
-3.  King's Fall                 14.  King's Fall Master
-4.  Root of Nightmares   15.  Root O'Nightmares Master
-5.  Vow of the Disciple    16.  "VoW" Master
-6.  Deep Stone Crypt      17.  Prophecy
-7.  Last Wish                  18.  Shattered Throne
-8.  Garden of Salvation   19.  Pit of Heresy
-9.  Warlord's Ruin           20.  Warlord's Ruin Master
-10. Spire of the Watcher  21.  Spire Master
-11. Duality                      22.  Duality Master
+1.  Crota's End               13.  Crota's End Master
+2.  Vault of Glass            14.  Vault of Glass Master 
+3.  King's Fall                 15.  King's Fall Master
+4.  Root of Nightmares   16.  Root O'Nightmares Master
+5.  Vow of the Disciple    17.  "VoW" Master
+6.  Deep Stone Crypt      18.  Prophecy
+7.  Last Wish                  19.  Shattered Throne
+8.  Garden of Salvation   20.  Pit of Heresy
+9.  Warlord's Ruin           21.  Warlord's Ruin Master
+10. Spire of the Watcher  22.  Spire Master
+11. Duality                      23.  Duality Master
+12. Grasp of Avarice       24. Grasp of Avarice Master
 )
-,, 360, 300
+,, 360, 325
 
 search()
 
@@ -88,38 +85,46 @@ launcher()
 		case 11:
 		dualityN()
 
+
 		case 12:
-		crotaM()
+		graspN()
 
 		case 13:
+		crotaM()
+
+		case 14:
 		vogM()
 	
-		case 14:
+		case 15:
 		kfM()
 
-		case 15:
+		case 16:
 		rootM()
 
-		case 16:
+		case 17:
 		vowM()
 
-		case 17:
+		case 18:
 		prophecy()
 
-		case 18:
+		case 19:
 		shattered()
 
-		case 19:
+		case 20:
 		pit()
 
-		case 20:
+		case 21:
 		warlordsM()
 
-		case 21:
+		case 22:
 		spireM()
 
-		case 22:
+		case 23:
 		dualityM()
+
+		case 24:
+		graspM()
+
 	}
 	start_macro()
 }
@@ -129,6 +134,9 @@ start_macro()
 {
 	switch macro_choice
 	{
+		case 0:
+		macro_choice := 2
+
 		case 1:
 		Send, {F9}
 		macro_choice := 2
@@ -596,10 +604,25 @@ dualityM()
 
 search()
 {
+	switch macro_choice
+	{
+		case 3:
+		Send, {F9}
+		macro_choice := 2
+		insure()
+		return
+
+		case 4:
+		Send, {F8}
+		macro_choice := 2
+		insure()
+		return
+	}
+
 	Loop
 	{
 
-		ImageSearch, xCoord, yCoord, 450, 355, 850, 410, *50 title_ref
+		ImageSearch, xCoord, yCoord, 450, 355, 850, 410, *50 title_reference.png
 		if(ErrorLevel = 0) {
 			Send, {LButton}
 			continue
@@ -608,33 +631,33 @@ search()
 		MouseMove, 900, 330
 		Sleep, 1000
 
-		ImageSearch, xCoord, yCoord, 890, 220, 1160, 300, *50 character_ref
+		ImageSearch, xCoord, yCoord, 890, 220, 1160, 300, *50 character_reference.png
 		if(ErrorLevel = 0) {
 			Send, {LButton}
 			Sleep, 1000
 			continue
 		}	
 
-		ImageSearch, xCoord, yCoord, 450, 300, 690, 340, *50 attention_ref
+		ImageSearch, xCoord, yCoord, 450, 300, 690, 340, *50 attention.png
 		if(ErrorLevel = 0) {
 			Send, {LButton}
 			Sleep, 1000
 			continue
 		}
 
-		ImageSearch, xCoord, yCoord, 450, 300, 690, 340, *50 error_ref
+		ImageSearch, xCoord, yCoord, 450, 300, 690, 340, *50 error_reference.png
 		if(ErrorLevel = 0) {
 			Send, {LButton}
 			Sleep, 1000
 			continue
 		}
 
-		ImageSearch, xCoord, yCoord, 70, 710, 120, 740, *50 orbit_ref
+		ImageSearch, xCoord, yCoord, 70, 710, 120, 740, *50 orbit_reference.png
 		if(ErrorLevel = 0) {
 			launcher()
 		}
 
-		ImageSearch, xCoord, yCoord, 450, 330, 740, 370, *50 afk_ref
+		ImageSearch, xCoord, yCoord, 450, 330, 740, 370, *50 afk_reference.png
 
 		if(ErrorLevel = 0) {
 			Send, {LButton}
@@ -653,21 +676,21 @@ insure()
 	Loop
 	{	
 
-		ImageSearch, xCoord, yCoord, 450, 300, 690, 340, *50 attention_ref
+		ImageSearch, xCoord, yCoord, 450, 300, 690, 340, *50 attention.png
 		if(ErrorLevel = 0) {
 			Send, {F8}
 			Sleep, 1000
 			search()
 		}
 
-		ImageSearch, xCoord, yCoord, 450, 300, 690, 340, *50 error_ref
+		ImageSearch, xCoord, yCoord, 450, 300, 690, 340, *50 error_reference.png
 		if(ErrorLevel = 0) {
 			Send, {F8}
 			Sleep, 1000
 			search()
 		}
 
-		ImageSearch, xCoord, yCoord, 450, 330, 740, 370, *50 afk_ref
+		ImageSearch, xCoord, yCoord, 450, 330, 740, 370, *50 afk_reference.png
 
 		if(ErrorLevel = 0) {
 			Sleep, 1000
