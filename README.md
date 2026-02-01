@@ -1,30 +1,52 @@
 # P.R.I.S.M.
 
-**P**retty **R**eliable **I**nstructions (to) **S**tart (any) **M**ission is the ultimate macro that will load a bot into any activity it needs, while also being able to reload it into the activity an infinite number of times should it get booted due to an error.
+**P**retty **R**eliable **I**nstructions (to) **S**tart (any) **M**ission is the ultimate macro script that can take a bot from the HELM/Enclave to wherever it needs to go. Or from orbit to the HELM/Enclave.
 
-## Using The Macro
+## Using the Macro
 
-First, you need AutoHotKey installed on your machine. 
-> [!IMPORTANT]
-> Second, you need to ensure that the script and prerequsite images are in the same directory!
-- Press F7 to start the process, input your commands, and let the macro do the rest.
-- Press F6 to reload the script, should you need to.
+### From the Shell
 
-## Insurance
+- Load the file using `ahk.LoadFile("PRISM.ahk")`
+- Call a function to execute `ahk.ExecFunction("crotaN")`
 
-What if I told you that the bots could put themselves back into a checkpoint, in the event of an error?
-PRISM can facilitate that. After loading in to an activity for the first time, PRISM continually monitors the screen looking for the infamous ERROR messages, and in the event it spots one, it will pause the Anti-AFK macro, reload into the activity, and resume the Anti-AFK macro.
+### From in-game
 
-Note: PRISM currently doesn't help when an activity is cleared. 
+- F7 opens an inputbox (expires after 5 seconds) where the user can type where they want to go, and the macro will take them there.
+    - Typing in the name of the final boss e.g. "atheon" or the short-hand for the raid e.g. "vog" will do. No caps or punctuation!
+    - In the event you have a choice between normal or master, leaving it blank assumes normal. Type 'm' for master. Also expires after 5 seconds.
+- F6 hard reloads the script, in the event of accidental input, or a misfire, or whatever reason. Instantly stops itself in its tracks.
+- Has no logic as to where it currently is, or if the other macro is running. Operator must consider how this script works in order to extract maximum value from this macro.
 
-## How it Works
+All functions assume the user is currently aboard the HELM or at the Enclave*.
 
-Upon activation, you are greeted with an option to trigger a macro upon landing at the desired destination. Then, you are prompted for the desired destination. Immediately, PRISM scans the screen for certain images in order to make its way to orbit. Once it has determined it is in orbit, it flies to the selected destination, activates the desired macro, and begins scanning for error messages.
+*Except orbit_to_helm/enclave, which assumes the user is in orbit, and switch_characters which can be used anywhere.
 
-# Legacy Macros
+## List of Functions
 
-In the event PRISM is not for you, there are other Legacy versions that provide similar fly-in capabilities with less bells and whistles.
+Substitute * with N or M for desired difficulty. 
+Ex: `crotaN` for normal Crota's End, `crotaM` for master Crota's End
 
-UltimateLauncherV1 is a macro that simply flies you into your destination, no image recognition, automatic macro launching, or other fancy things. It contains all relevant locations you can ask for.
-
-In the event you want a macro that loads in to one and only one activity, check the Standalone Macros folder for the respective activity.
+- crota*
+- dsc
+- duality*
+- garden
+- ghosts*
+- grasp*
+- kings*
+- lw
+- pit
+- prophecy 
+- root*
+- salvations*
+- shattered
+- spire*
+- sundered*
+- vesper*
+- vog*
+- vow*
+- warlords*
+- orbit_to_helm
+- orbit_to_enclave
+- switch_characters
+- open_fireteam
+- close_fireteam
