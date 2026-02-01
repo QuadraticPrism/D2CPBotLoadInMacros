@@ -1,6 +1,6 @@
 # P.R.I.S.M.
 
-**P**retty **R**eliable **I**nstructions (to) **S**tart (any) **M**ission is the ultimate macro script that can take a bot from the HELM/Enclave to wherever it needs to go. Or from orbit to the HELM/Enclave.
+**P**retty **R**eliable **I**nstructions (to) **S**tart (any) **M**ission is the ultimate macro script that can take a bot wherever it needs to go.
 
 ## Using the Macro
 
@@ -17,10 +17,6 @@
 - F6 hard reloads the script, in the event of accidental input, or a misfire, or whatever reason. Instantly stops itself in its tracks.
 - Has no logic as to where it currently is, or if the other macro is running. Operator must consider how this script works in order to extract maximum value from this macro.
 
-All functions assume the user is currently aboard the HELM or at the Enclave*.
-
-*Except orbit_to_helm/enclave, which assumes the user is in orbit, and switch_characters which can be used anywhere.
-
 ## List of Functions
 
 Substitute * with N or M for desired difficulty. 
@@ -28,7 +24,10 @@ Ex: `crotaN` for normal Crota's End, `crotaM` for master Crota's End
 
 - crota*
 - dsc
+- dp
+- dpE
 - duality*
+- equilibrium
 - garden
 - ghosts*
 - grasp*
@@ -45,7 +44,6 @@ Ex: `crotaN` for normal Crota's End, `crotaM` for master Crota's End
 - vog*
 - vow*
 - warlords*
-- orbit_to_helm
 - orbit_to_enclave
 - switch_characters
 - open_fireteam
